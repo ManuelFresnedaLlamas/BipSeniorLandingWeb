@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
@@ -45,7 +45,7 @@ export function AppShowcase() {
   };
 
   return (
-    <section className="py-32 bg-gradient-to-b from-white to-muted/30">
+    <section id="descubre" className="py-32 bg-gradient-to-b from-white to-muted/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,27 +75,32 @@ export function AppShowcase() {
               transition={{ duration: 0.6 }}
               className="relative flex justify-center"
             >
-              <div className="relative max-w-[380px]">
+              <div className="relative w-full max-w-[380px]">
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-[3rem] blur-3xl"></div>
 
                 {/* App screenshot - already includes phone mockup */}
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative"
-                >
-                  <Image
-                    src={screens[currentSlide].image}
-                    alt={screens[currentSlide].title}
-                    width={380}
-                    height={800}
-                    className="w-full h-auto"
-                  />
-                </motion.div>
+                <div className="relative" style={{ minHeight: '600px' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentSlide}
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -30 }}
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                      className="relative w-full"
+                    >
+                      <Image
+                        src={screens[currentSlide].image}
+                        alt={screens[currentSlide].title}
+                        width={380}
+                        height={800}
+                        className="w-full h-auto"
+                        priority={currentSlide === 0}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
 
                 {/* Navigation buttons */}
                 <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
@@ -127,20 +132,23 @@ export function AppShowcase() {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-6"
-              >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="space-y-6"
+                >
                 <h3 className="text-3xl sm:text-4xl text-foreground">
                   {screens[currentSlide].title}
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {screens[currentSlide].description}
                 </p>
-              </motion.div>
+                </motion.div>
+              </AnimatePresence>
 
               {/* Slide indicators */}
               <div className="flex gap-2 pt-4">

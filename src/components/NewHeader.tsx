@@ -28,6 +28,7 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
 
   const navLinks = [
     { label: "Inicio", href: "#inicio" },
+    { label: "Descúbrenos", href: "#descubre" },
     { label: "Características", href: "#caracteristicas" },
     { label: "Noticias", href: "#noticias" },
     { label: "Contacto", href: "#contacto" },
