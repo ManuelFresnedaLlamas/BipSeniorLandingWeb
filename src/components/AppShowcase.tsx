@@ -4,35 +4,32 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import estadoFamiliarImage from "figma:asset/c1d9c6e8d863ea278b82e4b2e34c4817001f85f4.png";
-import appScreen1 from "figma:asset/01030fc46e306ecd07d471cac919879bc41178d8.png";
-import appScreen2 from "figma:asset/774c68a073e0855bccd53be93ce8b3960cc83968.png";
-import appScreen3 from "figma:asset/913aa48669ad0b2c902524bd82a6e7719f5a213c.png";
+import Image from "next/image";
 
 export function AppShowcase() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const screens = [
     {
-      image: estadoFamiliarImage,
+      image: "/images/c1d9c6e8d863ea278b82e4b2e34c4817001f85f4.png",
       title: "Menú Principal",
       description:
         "El corazón de BipSenior. Desde aquí puedes acceder a todas las funcionalidades: ver el estado de tu familiar, solicitar citas médicas, gestionar visitas, consultar el historial de actividades, y mucho más. Todo diseñado para una navegación intuitiva y rápida.",
     },
     {
-      image: appScreen1,
+      image: "/images/01030fc46e306ecd07d471cac919879bc41178d8.png",
       title: "Menú de Residencia",
       description:
         "Accede fácilmente a todas las funcionalidades: solicita citas médicas, servicios, visitas y consulta el historial de actividades de tu familiar.",
     },
     {
-      image: appScreen2,
+      image: "/images/774c68a073e0855bccd53be93ce8b3960cc83968.png",
       title: "Perfil del Familiar",
       description:
         "Toda la información importante en un solo lugar. Datos de contacto, dirección, y detalles actualizados siempre a tu alcance.",
     },
     {
-      image: appScreen3,
+      image: "/images/913aa48669ad0b2c902524bd82a6e7719f5a213c.png",
       title: "Historial de Citas Médicas",
       description:
         "Consulta el calendario completo de citas médicas y asistencias. Visualiza las fechas programadas y mantén un control total de la atención sanitaria.",
@@ -91,9 +88,11 @@ export function AppShowcase() {
                   transition={{ duration: 0.3 }}
                   className="relative"
                 >
-                  <img
+                  <Image
                     src={screens[currentSlide].image}
                     alt={screens[currentSlide].title}
+                    width={380}
+                    height={800}
                     className="w-full h-auto"
                   />
                 </motion.div>

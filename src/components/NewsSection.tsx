@@ -3,8 +3,7 @@
 import { motion } from "motion/react";
 import { Calendar, Newspaper, Award, Users, Presentation, Sparkles } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import wipImage from "figma:asset/dc1adf5708809414b6978f1e55c6830fc4634a48.png";
-import waykupImage from "figma:asset/a6d6952897e5f331fa016adba7c95e18eb9ba6aa.png";
+import Image from "next/image";
 
 export function NewsSection() {
   const news = [
@@ -14,7 +13,7 @@ export function NewsSection() {
       title: "BipSenior en WaykUp 2025",
       description:
         "¡Nos vemos en WaykUp 2025! BipSenior estará presente los días 13 y 14 de noviembre en Murcia. Ven a descubrir cómo estamos transformando la conexión entre familias y residencias.",
-      image: waykupImage,
+      image: "/images/a6d6952897e5f331fa016adba7c95e18eb9ba6aa.png",
       tag: "Próximo evento",
     },
     {
@@ -50,7 +49,7 @@ export function NewsSection() {
       title: "BipSenior en la feria WIP",
       description:
         "BipSenior estuvo presente en la feria Work In Progress (WIP) en la Facultad de Economía de la Universidad de Murcia, presentando nuestra visión para transformar el cuidado de los mayores.",
-      image: wipImage,
+      image: "/images/dc1adf5708809414b6978f1e55c6830fc4634a48.png",
       tag: "Evento",
     },
   ];
@@ -99,9 +98,11 @@ export function NewsSection() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.title}
+                        width={400}
+                        height={200}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     )}

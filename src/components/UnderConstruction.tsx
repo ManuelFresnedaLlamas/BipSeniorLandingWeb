@@ -7,7 +7,7 @@ import { NewHeader } from "./NewHeader";
 import { NewFooter } from "./NewFooter";
 import { Input } from "./ui/input";
 import { useState } from "react";
-import { toast } from "sonner@2.0.3";
+import { toast } from "sonner";
 
 interface UnderConstructionProps {
   onBack: () => void;

@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { Bell, Calendar, MessageCircle, Shield, Camera, FileText } from "lucide-react";
-import careImage from "figma:asset/e8324143d1eaa9da60644dec08da546dd636a6b4.png";
+import Image from "next/image";
 
 export function NewFeatures() {
   const features = [
@@ -82,9 +82,11 @@ export function NewFeatures() {
           <div className="relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-2xl opacity-50"></div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src={careImage}
+              <Image
+                src="/images/e8324143d1eaa9da60644dec08da546dd636a6b4.png"
                 alt="Cuidado profesional BipSenior"
+                width={1200}
+                height={600}
                 className="w-full h-auto"
               />
             </div>

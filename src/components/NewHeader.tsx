@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
-import logoImage from "figma:asset/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png";
 
 interface NewHeaderProps {
   onPrivacyPage?: boolean;
@@ -13,6 +15,8 @@ interface NewHeaderProps {
 export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isNotHome = pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,11 +52,11 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
   };
 
   const handleLogoClick = () => {
-    if (onPrivacyPage && onBackClick) {
-      onBackClick();
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    if (isNotHome) {
+      // Next.js manejará la navegación
+      return;
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -66,13 +70,15 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button onClick={handleLogoClick} className="flex items-center gap-3 cursor-pointer">
-            <img 
-              src={logoImage} 
+          <Link href="/" className="flex items-center gap-3 cursor-pointer">
+            <Image 
+              src="/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png" 
               alt="BipSenior" 
+              width={120}
+              height={32}
               className="h-8 w-auto"
             />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">

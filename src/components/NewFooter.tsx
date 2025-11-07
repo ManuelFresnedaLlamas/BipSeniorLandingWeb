@@ -1,5 +1,9 @@
+"use client";
+
 import { Twitter, Linkedin, Instagram, Mail } from "lucide-react";
-import logoImage from "figma:asset/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NewFooterProps {
   onPrivacyClick?: () => void;
@@ -16,6 +20,7 @@ type LinkItem = {
 };
 
 export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutClick, onBlogClick }: NewFooterProps) {
+  const pathname = usePathname();
   const links: Record<string, LinkItem[]> = {
     producto: [
       { label: "Características", href: "#caracteristicas" },
@@ -41,22 +46,7 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
   ];
 
   const handleNavClick = (href: string, action?: string) => {
-    if (action === "privacy" && onPrivacyClick) {
-      onPrivacyClick();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (action === "terms" && onTermsClick) {
-      onTermsClick();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (action === "gdpr" && onGDPRClick) {
-      onGDPRClick();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (action === "about" && onAboutClick) {
-      onAboutClick();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (action === "blog" && onBlogClick) {
-      onBlogClick();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (href.startsWith("#")) {
+    if (href.startsWith("#")) {
       const element = document.querySelector(href);
       if (element) {
         const offset = 80;
@@ -78,9 +68,11 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
           {/* Brand */}
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <img 
-                src={logoImage} 
+              <Image 
+                src="/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png" 
                 alt="BipSenior" 
+                width={120}
+                height={32}
                 className="h-8 w-auto"
               />
             </div>
@@ -111,12 +103,21 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
               <ul className="space-y-3">
                 {items.map((item, index) => (
                   <li key={index}>
-                    <button
-                      onClick={() => handleNavClick(item.href, item.action)}
-                      className="text-muted-foreground hover:text-primary transition-colors text-left"
-                    >
-                      {item.label}
-                    </button>
+                    {item.action ? (
+                      <Link
+                        href={`/${item.href}`}
+                        className="text-muted-foreground hover:text-primary transition-colors text-left"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => handleNavClick(item.href, item.action)}
+                        className="text-muted-foreground hover:text-primary transition-colors text-left"
+                      >
+                        {item.label}
+                      </button>
+                    )}
                   </li>
                 ))}
               </ul>

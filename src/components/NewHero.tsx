@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-import estadoFamiliarImage from "figma:asset/c1d9c6e8d863ea278b82e4b2e34c4817001f85f4.png";
+import Image from "next/image";
 
 export function NewHero() {
   const handleScrollToContact = () => {
@@ -78,9 +78,11 @@ export function NewHero() {
               
               {/* App screenshot - already includes phone mockup */}
               <div className="relative">
-                <img
-                  src={estadoFamiliarImage}
+                <Image
+                  src="/images/c1d9c6e8d863ea278b82e4b2e34c4817001f85f4.png"
                   alt="BipSenior App - Estado Familiar"
+                  width={380}
+                  height={800}
                   className="w-full h-auto"
                 />
               </div>
