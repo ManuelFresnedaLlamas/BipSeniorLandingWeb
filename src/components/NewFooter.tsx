@@ -1,6 +1,6 @@
 "use client";
 
-import { Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { Linkedin, Instagram, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -41,7 +41,6 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
   };
 
   const socials = [
-    { icon: Twitter, href: "https://x.com/BipSenior", label: "Twitter" },
     { icon: Linkedin, href: "https://www.linkedin.com/in/bipsenior/", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/bipsenior/", label: "Instagram" },
     { icon: Mail, href: "mailto:bip@bipsenior.com", label: "Email" },

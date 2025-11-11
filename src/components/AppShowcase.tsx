@@ -1,13 +1,15 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 export function AppShowcase() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const screens = [
     {
@@ -42,6 +44,36 @@ export function AppShowcase() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + screens.length) % screens.length);
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (isPaused) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % screens.length);
+    }, 4000); // Cambia cada 4 segundos
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, screens.length]);
+
+  // Pausar cuando el usuario interactúa
+  const handleUserInteraction = () => {
+    setIsPaused(true);
+    // Reanudar después de 10 segundos sin interacción
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 10000);
   };
 
   return (
@@ -107,7 +139,10 @@ export function AppShowcase() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={prevSlide}
+                    onClick={() => {
+                      prevSlide();
+                      handleUserInteraction();
+                    }}
                     className="rounded-full bg-white shadow-lg"
                   >
                     <ChevronLeft className="h-5 w-5" />
@@ -115,7 +150,10 @@ export function AppShowcase() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={nextSlide}
+                    onClick={() => {
+                      nextSlide();
+                      handleUserInteraction();
+                    }}
                     className="rounded-full bg-white shadow-lg"
                   >
                     <ChevronRight className="h-5 w-5" />
@@ -155,7 +193,10 @@ export function AppShowcase() {
                 {screens.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentSlide(index)}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      handleUserInteraction();
+                    }}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       index === currentSlide
                         ? "w-8 bg-gradient-to-r from-primary to-accent"
