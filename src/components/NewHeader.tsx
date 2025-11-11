@@ -47,16 +47,24 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
       router.push(href);
       return;
     }
-    // Si es un ancla, hacer scroll suave
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+    // Si es un ancla
+    if (href.startsWith("#")) {
+      // Si estamos en otra página, navegar a home con el hash
+      if (isNotHome) {
+        router.push(`/${href}`);
+        return;
+      }
+      // Si estamos en home, hacer scroll suave
+      const element = document.querySelector(href);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   };
 

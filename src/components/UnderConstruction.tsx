@@ -29,18 +29,38 @@ export function UnderConstruction({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleNotifyMe = (e: React.FormEvent) => {
+  const handleNotifyMe = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      toast.success("¡Perfecto! Te notificaremos cuando esté listo", {
-        description: `Enviaremos un email a ${email}`
+    try {
+      const response = await fetch("https://formspree.io/f/xldaewdb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          source: title || "Blog",
+          type: "notification_request",
+        }),
       });
-      setEmail("");
+
+      if (response.ok) {
+        toast.success("¡Perfecto! Te notificaremos cuando esté listo", {
+          description: `Enviaremos un email a ${email}`
+        });
+        setEmail("");
+      } else {
+        throw new Error("Error al enviar el formulario");
+      }
+    } catch (error) {
+      toast.error("Error al enviar", {
+        description: "Por favor, intenta de nuevo más tarde.",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

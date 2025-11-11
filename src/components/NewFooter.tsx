@@ -3,7 +3,7 @@
 import { Twitter, Linkedin, Instagram, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NewFooterProps {
   onPrivacyClick?: () => void;
@@ -21,6 +21,9 @@ type LinkItem = {
 
 export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutClick, onBlogClick }: NewFooterProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const isNotHome = pathname !== "/";
+  
   const links: Record<string, LinkItem[]> = {
     producto: [
       { label: "Características", href: "#caracteristicas" },
@@ -29,7 +32,6 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
     ],
     empresa: [
       { label: "Sobre nosotros", href: "about", action: "about" },
-      { label: "Blog", href: "blog", action: "blog" },
     ],
     legal: [
       { label: "Privacidad", href: "privacy", action: "privacy" },
@@ -39,14 +41,21 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
   };
 
   const socials = [
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Mail, href: "mailto:info@bipsenior.com", label: "Email" },
+    { icon: Twitter, href: "https://x.com/BipSenior", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/bipsenior/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/bipsenior/", label: "Instagram" },
+    { icon: Mail, href: "mailto:bip@bipsenior.com", label: "Email" },
   ];
 
   const handleNavClick = (href: string, action?: string) => {
+    // Si es un ancla
     if (href.startsWith("#")) {
+      // Si estamos en otra página, navegar a home con el hash
+      if (isNotHome) {
+        router.push(`/${href}`);
+        return;
+      }
+      // Si estamos en home, hacer scroll suave
       const element = document.querySelector(href);
       if (element) {
         const offset = 80;
@@ -126,8 +135,19 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
         </div>
 
         {/* Bottom */}
-        <div className="py-8 border-t border-border text-center text-sm text-muted-foreground">
+        <div className="py-8 border-t border-border text-center text-sm text-muted-foreground space-y-2">
           <p>© 2025 BipSenior. Hecho con ❤️ para las familias. Todos los derechos reservados.</p>
+          <p>
+            Powered by{" "}
+            <a
+              href="https://www.dynaptia.es/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-accent transition-colors font-medium"
+            >
+              Dynaptia
+            </a>
+          </p>
         </div>
       </div>
     </footer>

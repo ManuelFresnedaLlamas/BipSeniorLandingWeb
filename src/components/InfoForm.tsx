@@ -26,30 +26,56 @@ export function InfoForm() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Simulate form submission
-    console.log("Form submitted:", formData);
-    
-    setIsSubmitted(true);
-    toast.success("¡Solicitud enviada!", {
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        residenceName: "",
-        userType: "",
-        message: "",
+    try {
+      const response = await fetch("https://formspree.io/f/xldaewdb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          userType: formData.userType,
+          residenceName: formData.residenceName,
+          message: formData.message,
+        }),
       });
-    }, 3000);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast.success("¡Solicitud enviada!", {
+          description: "Nos pondremos en contacto contigo pronto.",
+        });
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            residenceName: "",
+            userType: "",
+            message: "",
+          });
+        }, 3000);
+      } else {
+        throw new Error("Error al enviar el formulario");
+      }
+    } catch (error) {
+      toast.error("Error al enviar", {
+        description: "Por favor, intenta de nuevo más tarde.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -226,9 +252,10 @@ export function InfoForm() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity rounded-full h-14 gap-3 shadow-xl shadow-primary/25"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity rounded-full h-14 gap-3 shadow-xl shadow-primary/25 disabled:opacity-50"
                   >
-                    <span>Enviar solicitud</span>
+                    <span>{isSubmitting ? "Enviando..." : "Enviar solicitud"}</span>
                     <Send className="h-5 w-5" />
                   </Button>
 

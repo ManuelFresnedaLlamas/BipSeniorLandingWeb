@@ -13,35 +13,26 @@ export function NewsSection() {
       title: "BipSenior en WaykUp 2025",
       description:
         "¡Nos vemos en WaykUp 2025! BipSenior estará presente los días 13 y 14 de noviembre en Murcia. Ven a descubrir cómo estamos transformando la conexión entre familias y residencias.",
-      image: "/images/a6d6952897e5f331fa016adba7c95e18eb9ba6aa.png",
+      image: "/images/waykup.svg",
       tag: "Próximo evento",
     },
     {
       icon: Award,
-      date: "15 Octubre 2024",
-      title: "BipSenior seleccionada en el programa de aceleración de startups",
+      date: "16 Mayo 2024",
+      title: "Ignacio Galián entre los 1000 empresarios y CEOs más disruptivos Top 2024",
       description:
-        "Hemos sido seleccionados para participar en el prestigioso programa de aceleración de startups de salud digital, donde recibiremos mentoría y recursos para escalar nuestra plataforma.",
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdGFydHVwJTIwdGVhbSUyMGNlbGVicmF0aW5nfGVufDF8fHx8MTc2MTY0NDAzOHww&ixlib=rb-4.1.0&q=80&w=1080",
-      tag: "Logro",
-    },
-    {
-      icon: Users,
-      date: "1 Septiembre 2024",
-      title: "Primeras 5 residencias se unen al programa piloto",
-      description:
-        "Comenzamos nuestro programa piloto con 5 residencias de ancianos en Madrid, conectando a más de 200 familias con sus seres queridos de manera digital y cercana.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwY2FyZSUyMGhvbWV8ZW58MXx8fHwxNzYxNjQ0MDM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      tag: "Milestone",
+        "Ignacio Galián, CEO y Co-fundador de BipSenior, ha sido reconocido entre los 1000 empresarios y CEOs más disruptivos Top 2024 que sobresalen por su talento innovador y disruptivo en el ecosistema empresarial español.",
+      image: "/images/top-ceos-1330x893.jpg",
+      tag: "Reconocimiento",
     },
     {
       icon: Newspaper,
-      date: "10 Julio 2024",
-      title: "BipSenior lanza su plataforma",
+      date: "16 Febrero 2024",
+      title: "BipSenior entre las 15 startups de eHealth a tener en cuenta en 2024",
       description:
-        "Después de meses de desarrollo y pruebas, lanzamos oficialmente nuestra plataforma. Una solución que revolucionará la forma en que las familias se conectan con las residencias.",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3NjE2MDU3NTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      tag: "Producto",
+        "La revista digital para startups y emprendedores El Referente nos ha incluido entre las 15 startups de eHealth a tener en cuenta para este 2024, reconociendo nuestro impacto en el ecosistema español de salud digital.",
+      image: "/images/revistaReferente.jpg",
+      tag: "Reconocimiento",
     },
     {
       icon: Presentation,
