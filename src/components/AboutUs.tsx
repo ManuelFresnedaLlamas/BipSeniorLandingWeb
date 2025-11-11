@@ -5,7 +5,7 @@ import { ArrowLeft, Linkedin, Mail, Heart, Target, Users, Lightbulb } from "luci
 import { Button } from "./ui/button";
 import { NewHeader } from "./NewHeader";
 import { NewFooter } from "./NewFooter";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import Image from "next/image";
 
 interface AboutUsProps {
   onBack: () => void;
@@ -17,32 +17,30 @@ interface AboutUsProps {
 export function AboutUs({ onBack, onPrivacyClick, onTermsClick, onGDPRClick }: AboutUsProps) {
   const teamMembers = [
     {
-      name: "Ana García Martínez",
-      role: "CEO & Co-fundadora",
-      image: "https://images.unsplash.com/photo-1655249481446-25d575f1c054?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB3b21hbiUyMHBvcnRyYWl0JTIwYnVzaW5lc3N8ZW58MXx8fHwxNzYyNDgzOTI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Ingeniera de Telecomunicaciones con más de 12 años de experiencia en el sector salud digital. Anteriormente trabajó en soluciones de telemedicina en hospitales de referencia en Madrid. Ana fundó BipSenior tras vivir la experiencia de buscar residencia para su abuela y detectar la falta de herramientas digitales que facilitaran la comunicación entre familias y centros.",
+      name: "Ignacio Galián Carrillo",
+      role: "CEO & Fundador",
+      image: "/images/nachoFoto.jpeg",
+      bio: "Emprendedor y directivo con foco en operaciones y mantenimiento industrial e innovación en salud digital, ha desarrollado su carrera en entornos industriales y servicios, con especial atención a la excelencia operativa, además de disponer de un Executive MBA por ENAE. Su liderazgo se caracteriza por la combinación de eficiencia operativa, visión estratégica y compromiso humano, impulsando un modelo de gestión centrado en la mejora continua e impulsar soluciones digitales centradas en las personas.",
       experience: [
-        "Directora de Innovación Digital en Sanitas (2018-2021)",
-        "Product Manager en Quirónsalud Digital (2015-2018)",
-        "MBA por IE Business School",
-        "Participante en el programa de aceleración de Google for Startups"
+        "Director de mantenimiento en Iberfrasa (2024 - actualidad)",
+        "MBA por ENAE Business School",
+        "Jefe de Mantenimiento en Grifols (1995-2009)"
       ],
-      linkedin: "#",
-      email: "ana.garcia@bipsenior.com"
+      linkedin: "https://www.linkedin.com/in/ignaciogalian/",
+      email: "bip@bipsenior.com"
     },
     {
-      name: "Carlos Rodríguez López",
-      role: "CTO & Co-fundador",
-      image: "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBtYW4lMjBwb3J0cmFpdCUyMGJ1c2luZXNzfGVufDF8fHx8MTc2MjUwNTc0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      bio: "Desarrollador Full Stack especializado en aplicaciones móviles y arquitecturas escalables. Con 10 años de experiencia en startups tecnológicas, Carlos ha liderado equipos de desarrollo en empresas de healthtech y fintech. Su pasión por crear productos que generen impacto social le llevó a cofundar BipSenior, donde lidera el desarrollo tecnológico de la plataforma.",
+      name: "Manuel Fresneda Llamas",
+      role: "CTO & Socio",
+      image: "/images/fresnedaFoto.jpeg",
+      bio: "Ingeniero informático y emprendedor especializado en desarrollo de software a medida e inteligencia artificial, liderando la visión tecnológica de BipSenior. Apasionado por la innovación y el impacto social, combina su experiencia en arquitectura de sistemas, automatización y diseño de producto digital para crear soluciones que mejoran la comunicación entre familias, residencias y profesionales del sector.",
       experience: [
-        "Lead Developer en Mediquo (2019-2022)",
-        "Senior Software Engineer en Glovo (2016-2019)",
-        "Ingeniero Informático por la Universidad Politécnica de Valencia",
-        "Especialización en IA aplicada a Healthcare"
+        "CEO & Fundador de Dynaptia (2024-actualidad)",
+        "Senior Software Engineer & IA en AicrumIT (2023-2024)",
+        "Ingeniero de software en Visualtis (2021-2023)"
       ],
-      linkedin: "#",
-      email: "carlos.rodriguez@bipsenior.com"
+      linkedin: "https://www.linkedin.com/in/manuel-fresneda-llamas-9143141a2",
+      email: "bip@bipsenior.com"
     }
   ];
 
@@ -186,10 +184,11 @@ export function AboutUs({ onBack, onPrivacyClick, onTermsClick, onGDPRClick }: A
                 {/* Image */}
                 <div className="md:col-span-2">
                   <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
-                    <ImageWithFallback
+                    <Image
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
@@ -252,11 +251,11 @@ export function AboutUs({ onBack, onPrivacyClick, onTermsClick, onGDPRClick }: A
               Estamos en búsqueda constante de personas apasionadas por la tecnología y el impacto social. Si quieres ayudarnos a mejorar la vida de miles de familias, ¡contáctanos!
             </p>
             <Button 
-              onClick={() => window.location.href = "mailto:jobs@bipsenior.com"}
+              onClick={() => window.location.href = "mailto:bip@bipsenior.com"}
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity rounded-full px-8"
             >
               <Mail className="h-5 w-5 mr-2" />
-              jobs@bipsenior.com
+              bip@bipsenior.com
             </Button>
           </motion.div>
         </div>

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
+import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BipSenior - Conecta con tus seres queridos cada día",
   description: "La plataforma que une familias, residencias y cuidadores. Fotos, actualizaciones y tranquilidad al instante.",
   icons: {
-    icon: "/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png",
-    shortcut: "/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png",
-    apple: "/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png",
+    icon: "/images/bip.png",
+    shortcut: "/images/bip.png",
+    apple: "/images/bip.png",
   },
 };
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         {children}
         <Toaster />
+        <CookieBanner />
       </body>
     </html>
   );

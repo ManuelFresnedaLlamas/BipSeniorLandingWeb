@@ -69,7 +69,7 @@ export function NewFooter({ onPrivacyClick, onTermsClick, onGDPRClick, onAboutCl
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <Image 
-                src="/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png" 
+                src="/images/bipSeniorSinBackground.png" 
                 alt="BipSenior" 
                 width={120}
                 height={32}

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
 interface NewHeaderProps {
@@ -16,6 +16,7 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isNotHome = pathname !== "/";
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
     { label: "Descúbrenos", href: "#descubre" },
     { label: "Características", href: "#caracteristicas" },
     { label: "Noticias", href: "#noticias" },
+    { label: "Sobre nosotros", href: "/about" },
     { label: "Contacto", href: "#contacto" },
   ];
 
@@ -40,6 +42,12 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
       onBackClick();
       return;
     }
+    // Si es un enlace de página (no ancla), usar Next.js router
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
+    // Si es un ancla, hacer scroll suave
     const element = document.querySelector(href);
     if (element) {
       const offset = 80;
@@ -73,7 +81,7 @@ export function NewHeader({ onPrivacyPage = false, onBackClick }: NewHeaderProps
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 cursor-pointer">
             <Image 
-              src="/images/7e2fdbada78211440bd4e68ee1905f438d13f6bc.png" 
+              src="/images/bipSeniorSinBackground.png" 
               alt="BipSenior" 
               width={120}
               height={32}
