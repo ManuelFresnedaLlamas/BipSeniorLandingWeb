@@ -36,7 +36,7 @@ export function AboutSection() {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Sobre NeuroDigital 360
+                Sobre BipSenior
               </h2>
               <p className="text-lg text-gray-600 mb-6">
                 Somos una consultoría de tecnología que combina expertise técnico con metodologías 
@@ -68,7 +68,7 @@ export function AboutSection() {
           <div className="relative">
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1728933102332-a4f1a281a621?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHRlY2hub2xvZ3klMjBvZmZpY2V8ZW58MXx8fHwxNzU2ODUzNTI2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Equipo NeuroDigital 360"
+              alt="Equipo BipSenior"
               className="rounded-2xl shadow-xl w-full h-auto"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-cyan-600/10 rounded-2xl"></div>

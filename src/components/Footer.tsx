@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
+import Image from "next/image";
 import logo from "figma:asset/98f17249d2de66f8cfd508a531e0ce0cf0e0eb05.png";
 
 export function Footer() {
@@ -40,7 +41,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <img src={logo} alt="NeuroDigital 360" className="h-10 w-auto" />
+              <Image src={logo} alt="BipSenior" className="h-10 w-auto" width={120} height={40} />
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Transformamos empresas a través de soluciones tecnológicas innovadoras, 
@@ -51,8 +52,8 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <a href="mailto:contacto@neurodigital360.com" className="text-gray-300 hover:text-white transition-colors">
-                  contacto@neurodigital360.com
+                <a href="mailto:bip@bipsenior.com" className="text-gray-300 hover:text-white transition-colors">
+                  bip@bipsenior.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -148,7 +149,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-gray-400 text-sm">
-              © 2024 NeuroDigital 360. Todos los derechos reservados.
+              © 2025 BipSenior. Todos los derechos reservados.
             </div>
 
             {/* Legal Links */}
@@ -168,7 +169,7 @@ export function Footer() {
           {/* Additional Info */}
           <div className="mt-6 pt-6 border-t border-gray-800 text-center">
             <p className="text-gray-500 text-sm">
-              NeuroDigital 360 - Impulsando la transformación digital con inteligencia y tecnología de vanguardia
+              BipSenior - Conectando familias con residencias. Momentos compartidos, corazones unidos.
             </p>
           </div>
         </div>

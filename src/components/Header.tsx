@@ -20,7 +20,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="NeuroDigital 360" className="h-14 w-auto" />
+            <img src={logo} alt="BipSenior" className="h-14 w-auto" />
           </div>
 
           {/* Desktop Navigation */}

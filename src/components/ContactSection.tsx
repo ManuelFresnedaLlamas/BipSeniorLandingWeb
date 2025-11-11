@@ -47,8 +47,8 @@ export function ContactSection() {
     {
       icon: Mail,
       title: "Email",
-      content: "contacto@neurodigital360.com",
-      link: "mailto:contacto@neurodigital360.com"
+      content: "bip@bipsenior.com",
+      link: "mailto:bip@bipsenior.com"
     },
     {
       icon: Phone,

@@ -7,7 +7,7 @@ export function TestimonialsSection() {
       name: "María González",
       position: "CEO, TechStart Solutions",
       company: "TechStart Solutions",
-      content: "NeuroDigital 360 transformó completamente nuestra infraestructura. Su equipo no solo migró nuestros sistemas a la nube, sino que también implementó soluciones de IA que aumentaron nuestra productividad en un 40%.",
+      content: "BipSenior transformó completamente nuestra infraestructura. Su equipo no solo migró nuestros sistemas a la nube, sino que también implementó soluciones de IA que aumentaron nuestra productividad en un 40%.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
     },
