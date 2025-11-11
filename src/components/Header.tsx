@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import logo from "figma:asset/98f17249d2de66f8cfd508a531e0ce0cf0e0eb05.png";
 
 export function Header() {
@@ -20,7 +21,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="BipSenior" className="h-14 w-auto" />
+            <Image src={logo} alt="BipSenior" className="h-14 w-auto" width={120} height={56} />
           </div>
 
           {/* Desktop Navigation */}
